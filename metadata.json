@@ -1,0 +1,6 @@
+{
+  "name": "L'Atelier Pet Grooming",
+  "description": "Luxury, modern, and minimal pet grooming website featuring full-stack Firebase booking and an interactive administrator console.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

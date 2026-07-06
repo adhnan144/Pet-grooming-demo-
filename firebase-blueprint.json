@@ -1,0 +1,136 @@
+{
+  "entities": {
+    "Appointment": {
+      "title": "Appointment",
+      "description": "A pet grooming appointment reservation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientEmail": { "type": "string" },
+        "clientPhone": { "type": "string" },
+        "petType": { "type": "string", "enum": ["dog", "cat", "other"] },
+        "petBreed": { "type": "string" },
+        "petAge": { "type": "number" },
+        "petWeight": { "type": "number" },
+        "specialNotes": { "type": "string" },
+        "medicalConditions": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "servicePrice": { "type": "number" },
+        "groomerId": { "type": "string" },
+        "groomerName": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "timeSlot": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "completed", "cancelled"] },
+        "createdAt": { "type": "string" },
+        "paymentStatus": { "type": "string", "enum": ["unpaid", "paid"] }
+      },
+      "required": ["id", "clientName", "clientEmail", "clientPhone", "petType", "serviceId", "serviceName", "servicePrice", "groomerId", "groomerName", "date", "timeSlot", "status", "createdAt"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "A pet grooming service description",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "duration": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "benefits": { "type": "array" },
+        "image": { "type": "string" }
+      },
+      "required": ["id", "name", "description", "duration", "price", "category", "benefits"]
+    },
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "A blog article written by the salon team",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "content": { "type": "string" },
+        "category": { "type": "string" },
+        "author": { "type": "string" },
+        "image": { "type": "string" },
+        "date": { "type": "string" },
+        "readTime": { "type": "string" },
+        "featured": { "type": "boolean" }
+      },
+      "required": ["id", "title", "summary", "content", "category", "author", "date"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "A photo in the salon's masonry gallery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "title", "category", "imageUrl"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "A review from a pet parent",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientName": { "type": "string" },
+        "petName": { "type": "string" },
+        "petBreed": { "type": "string" },
+        "rating": { "type": "number" },
+        "text": { "type": "string" },
+        "image": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "clientName", "rating", "text"]
+    },
+    "TeamMember": {
+      "title": "TeamMember",
+      "description": "A salon professional or pet groomer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "bio": { "type": "string" },
+        "image": { "type": "string" },
+        "certifications": { "type": "array" }
+      },
+      "required": ["id", "name", "role", "bio", "image"]
+    }
+  },
+  "firestore": {
+    "appointments/{appointmentId}": {
+      "schema": { "$ref": "#/entities/Appointment" },
+      "description": "User and guest grooming appointments"
+    },
+    "services/{serviceId}": {
+      "schema": { "$ref": "#/entities/Service" },
+      "description": "Grooming services and details"
+    },
+    "blogPosts/{postId}": {
+      "schema": { "$ref": "#/entities/BlogPost" },
+      "description": "Salon blog posts"
+    },
+    "gallery/{itemId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Masonry gallery items"
+    },
+    "testimonials/{testimonialId}": {
+      "schema": { "$ref": "#/entities/Testimonial" },
+      "description": "Customer reviews and testimonials"
+    },
+    "teamMembers/{memberId}": {
+      "schema": { "$ref": "#/entities/TeamMember" },
+      "description": "Groomers and salon team members"
+    }
+  }
+}
