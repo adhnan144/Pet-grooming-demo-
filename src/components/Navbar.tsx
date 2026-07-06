@@ -130,7 +130,7 @@ export default function Navbar({ currentPage, setCurrentPage, onBookNow, isAdmin
 
           {/* Actions */}
           <div className="hidden lg:flex items-center gap-4">
-            {user ? (
+            {user && (
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => handleNavClick("dashboard")}
@@ -152,15 +152,6 @@ export default function Navbar({ currentPage, setCurrentPage, onBookNow, isAdmin
                   <LogOut className="w-4 h-4" />
                 </button>
               </div>
-            ) : (
-              <button
-                onClick={() => handleNavClick("login")}
-                className={`text-xs font-sans font-semibold uppercase tracking-wider py-2 px-4 border rounded-[4px] hover:border-gold hover:text-gold transition-all duration-300 cursor-pointer ${
-                  isScrolled ? "text-white/80 border-white/20" : "text-forest/80 border-forest/25"
-                }`}
-              >
-                Sign In
-              </button>
             )}
 
             <button
@@ -227,7 +218,7 @@ export default function Navbar({ currentPage, setCurrentPage, onBookNow, isAdmin
             </div>
 
             <div className="flex flex-col gap-4 border-t border-white/10 pt-8 mt-8">
-              {user ? (
+              {user && (
                 <div className="flex items-center justify-between text-white/90 mb-4">
                   <button
                     onClick={() => handleNavClick("dashboard")}
@@ -243,13 +234,6 @@ export default function Navbar({ currentPage, setCurrentPage, onBookNow, isAdmin
                     <LogOut className="w-4 h-4" /> Sign Out
                   </button>
                 </div>
-              ) : (
-                <button
-                  onClick={() => handleNavClick("login")}
-                  className="w-full text-center py-3 rounded-full border border-white/20 text-white font-sans font-medium hover:border-gold transition-colors"
-                >
-                  Sign In
-                </button>
               )}
 
               <button
